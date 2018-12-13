@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:annotation-config />
+
+    <context:component-scan base-package="com.qwe.asd.service"></context:component-scan>
+    <!--<bean id="testService" class="com.qwe.asd.service.TestService">-->
+    <!--</bean>-->
+    <!--<bean id="testDao" class="com.qwe.asd.service.TestDao">-->
+        <!--<property name="wwww" value="rrrrrr"></property>-->
+    <!--</bean>-->
+    <!--<bean id="iDao" class="com.qwe.asd.service.IDaoImpl">-->
+    <!--</bean>-->
+    <!--<bean id="testController" class="com.qwe.asd.controller.TestController">-->
+       <!--<property name="testService" ref="testService"></property>-->
+    <!--</bean>-->
+</beans>
+
