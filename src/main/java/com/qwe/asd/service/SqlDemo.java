@@ -1,11 +1,14 @@
 package com.qwe.asd.service;
+import cn.base.entity.ChargeEntity;
 import cn.base.entity.HibernateUtil;
+import cn.base.entity.LotteryEntity;
 import cn.base.entity.PersonEntity;
 import org.hibernate.Session;
 
 import java.sql.*;
 import java.lang.*;
 import java.util.List;
+import java.util.Map;
 
 public class SqlDemo {
     // JDBC 驱动名及数据库 URL
@@ -54,6 +57,22 @@ public class SqlDemo {
         return personList;
     }
 
+    public static List getLottery(){
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+
+        @SuppressWarnings("unchecked")
+        List<LotteryEntity> lotteryList = session.createQuery("select l from LotteryEntity l").list();
+
+        for(LotteryEntity eachPerson : lotteryList) {
+            System.out.println(eachPerson);
+        }
+
+        session.getTransaction().commit();
+        HibernateUtil.closeSession();
+        return lotteryList;
+    }
+
     public static List getOnePerson(String name){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -68,6 +87,39 @@ public class SqlDemo {
         session.getTransaction().commit();
         HibernateUtil.closeSession();
         return personList;
+    }
+
+    public static List getRecordByDate(String begin, String end){
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+
+        @SuppressWarnings("unchecked")
+        List<PersonEntity> personList = session.createQuery("select p from PersonEntity p where p.time between :date and :ceilDate").setParameter("date", java.sql.Date.valueOf(begin)).setParameter("ceilDate", java.sql.Date.valueOf(end)).list();
+
+        for(PersonEntity eachPerson : personList) {
+            System.out.println(eachPerson);
+        }
+        session.getTransaction().commit();
+        HibernateUtil.closeSession();
+        return personList;
+    }
+
+    public static List getChargeRecord(Map<String, Object> map) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+
+        String sql = "select c from ChargeEntity c";
+        for(int i = 0; )
+
+        @SuppressWarnings("unchecked")
+        List<ChargeEntity> chargeList = session.createQuery("select c from ChargeEntity c where c.time between :date and :ceilDate").setParameter("date", java.sql.Date.valueOf(begin)).setParameter("ceilDate", java.sql.Date.valueOf(end)).list();
+
+        for(ChargeEntity eachCharge : chargeList) {
+            System.out.println(eachCharge);
+        }
+        session.getTransaction().commit();
+        HibernateUtil.closeSession();
+        return chargeList;
     }
 
     public static ResultSet getResult(){

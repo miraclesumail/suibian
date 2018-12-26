@@ -3,12 +3,13 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "person")
-public class PersonEntity implements java.io.Serializable {
-    private static final long serialVersionUID = -4376187124011546736L;
+@Table(name = "charges")
+public class ChargeEntity implements java.io.Serializable {
+    private static final long serialVersionUID = -4376187824011546736L;
 
     private Integer id;
-    private String name;
+    private Integer amount;
+    private String method;
     private Date time;
 
     @Id
@@ -20,13 +21,22 @@ public class PersonEntity implements java.io.Serializable {
         this.id = id;
     }
 
-    @Column(length = 50 , nullable = false , unique = true)
-    public String getName() {
-        return name;
+    @Column(nullable = false)
+    public Integer getAmount() {
+        return amount;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    @Column(length = 50 , nullable = false , unique = true)
+    public String getMethod() {
+        return method;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
     }
 
     @Column(name = "time", columnDefinition="DATETIME")
@@ -41,7 +51,7 @@ public class PersonEntity implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "PersonEntity [id=" + id + ", name=" + name + ", time = " + time + "]";
+        return "PersonEntity [id=" + id + ", method =" + method + ", time = " + time + "]";
     }
 
 }

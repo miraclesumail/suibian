@@ -16,5 +16,7 @@
         <property name="format_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
         <mapping class="cn.base.entity.PersonEntity"/>
+        <mapping class="cn.base.entity.LotteryEntity"/>
+        <mapping class="cn.base.entity.ChargeEntity"/>
     </session-factory>
 </hibernate-configuration>
