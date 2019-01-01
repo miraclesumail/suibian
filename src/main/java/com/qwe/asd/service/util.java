@@ -5,7 +5,6 @@ import java.util.*;
 public class util {
     public static  List<Map<String, Object>> fullToList(ResultSet rs){
 
-        System.out.println("lllllll");
 
         ArrayList result = new ArrayList();
         try {
